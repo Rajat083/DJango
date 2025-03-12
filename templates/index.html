@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block login %}
+    {% if request.user.is_authenticated %}
+        <div class="d-inline-flex justify-content-evenly mx-2 mt-3">
+            <a href="/user">
+                <img class="mx-3 pb-3" src="{% static 'user.png' %}" width="45" alt="user">
+            </a>
+            <p><a href="/logout" class="btn btn-primary mx-2">Logout</a></p>
+        </div>
+    {% else %}
+        <div class="d-inline-flex justify-content-evenly mx-2 mt-3">
+            <p><a href="/login" class="btn btn-primary mx-2">Login</a></p>
+            <p><a href="/signup" class="btn btn-primary mx-2">Sign Up</a></p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container text-center mt-4">
+        <h1>Welcome {{request.user.username}} to the home page</h1>
+        <p>This is the home page of this website</p>
+    </div>
+{% endblock %}

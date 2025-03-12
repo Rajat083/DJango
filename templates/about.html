@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% if request.user.is_autheticated %}
+    {% block login %}
+        <div class="d-inline-flex justify-content-evenly mx-2 mt-3">
+            <a href="/user">
+                <img class="mx-3 pb-3" src="{% static 'user.png' %}" width="45" alt="user">
+            </a>
+            <p><a href="/logout" class="btn btn-primary mx-2">Logout</a></p>
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4">About Us</h1>
+        <p class="text-center mt-4">This is the about page of this website</p>
+    </div>
+{% endblock %}

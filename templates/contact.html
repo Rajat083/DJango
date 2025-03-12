@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block login %}
+    <div class="d-inline-flex justify-content-evenly mx-2 mt-3">
+        <a href="/user">
+            <img class="mx-3 pb-3" src="{% static 'user.png' %}" width="45" alt="user">
+        </a>
+        <p><a href="/logout" class="btn btn-primary mx-2">Logout</a></p>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    {% if forloop.first %}  {# Ensures only the first (latest) message is displayed #}
+        <div class="alert text-center {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+{% endfor %}
+{% endif %}
+    <div class="container mt-4 ">
+        <h1 class="text-center mb-2">Contact Me</h1>
+        <div class="row justify-content-center d-flex align-items-center">
+            <div class="col-md-6">
+                <div class="container justify-content-center d-flex">
+                    <a href="https://www.instagram.com/rajat.sharma144/?next=%2F" target="_blank">
+                        <img src="{% static 'instagram.png' %}" class="img-fluid" alt="contact" width="80">
+                    </a>
+                    <a href="https://www.linkedin.com/in/rajat-sharma-ab9a202a1/" target="_blank">
+                        <img src="{% static 'linkedin.png' %}" class="img-fluid" alt="contact" width="80">
+                    </a>
+                </div>
+                <div class="card shadow p-4">
+                    <form action="/contact" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

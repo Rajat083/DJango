@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}User{% endblock %}
+
+{% block login %}
+    <div class="d-inline-flex justify-content-evenly mx-2 mt-3">
+        <a href="/user">
+            <img class="mx-3 pb-3" src="{% static 'user.png' %}" width="45" alt="user">
+        </a>
+        <p><a href="/logout" class="btn btn-primary mx-2">Logout</a></p>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center mt-6 py-5">
+    <div>
+        <img class="pb-3" src="{% static 'user.png' %}" width="150" alt="user">
+    </div>
+    <h1 class="fs-2 mt-2"><b> Welcome {{ user.username }} to the user page </b></h1>
+    <div class="card mt-4 shadow p-4">
+        <div class="container mt-2">
+            <p class="fs-4"><b>Username:</b> {{ user.username }}</p>
+            <p class="fs-4"><b>Email:</b> {{ user.email }}</p>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
