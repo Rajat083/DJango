@@ -1,1 +1,1 @@
-This is a fum purpose website
+This is a fun purpose website
