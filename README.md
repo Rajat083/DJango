@@ -1,2 +1,0 @@
-# DJango
-Fun Puspose
